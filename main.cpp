@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <list>
 #include "Goat.h"
+#include <string>
+#include <cstdlib>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
@@ -34,4 +36,12 @@ int main() {
 
     return 0;
 }
-
+int main_menu() {
+    int choice = 0;
+    cout << "GOAT MANAGER 3001" << endl; 
+    cout << "[1] Add a goat" << endl; 
+    cout << "[2] Delete a goat" << endl; 
+    cout << "[3] List goats" << endl; 
+    cout << "[4] Quit" << endl; 
+    cout << "Choice --> ";
+}
