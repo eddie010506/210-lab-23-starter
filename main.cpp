@@ -124,6 +124,40 @@ int select_goat(list<Goat> trip) {
     for (auto it = trip.begin(); it != trip.end(); ++it) {
         cout << "[" << i << "] " << left << setw(5) << it->get_name()
              << " (" << it->get_age() 
-             << ", " << it->get_color() << ")" << endl:
+             << ", " << it->get_color() << ")" << endl;
         i++;
     }
+    int choice = 0;
+    cout << "Choice --> ";
+    cin >> choice;
+    
+    // validate input
+    while (cin.fail() || choice < 1 || choice > trip.size()) {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Invalid choice. Enter a number from 1 to " << trip.size() << "." << endl;
+        cout << "Choice --> ";
+        cin >> choice;
+    }
+    return choice;
+}
+
+void delete_goat(list<Goat> &trip) {
+    if (trip.empty()) {
+        cout << "There are no goats to delete. " << endl;
+        return;
+    }
+
+    // Get the user's 1-based choice
+    int choice = select_goat(trip);
+    
+    // Get an iterator to the start
+    auto it = trip.begin();
+    
+    std::advance(it, choice);
+    
+    cout << "\n" << it->get_name() << " has been removed from the trip." << endl;
+    
+    // erase the goat at the iterator's position
+    trip.erase(it);
+}
