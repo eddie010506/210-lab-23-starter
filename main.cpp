@@ -66,7 +66,7 @@ int main() {
 }
 int main_menu() {
     int choice = 0;
-    cout << "GOAT MANAGER 3001" << endl; 
+    cout << "*** GOAT MANAGER 3001 ***" << endl; 
     cout << "[1] Add a goat" << endl; 
     cout << "[2] Delete a goat" << endl; 
     cout << "[3] List goats" << endl; 
@@ -105,13 +105,14 @@ void display_trip(list<Goat> trip) {
         cout << "The trip is empty. No goats yet!" << endl;
         return;
     }
-    
+    int i= 1;
     cout << "CURRENT GOAT TRIP" << endl;
     //loop to iterate
     for (const auto& goat : trip) {
-        cout << "- " << left << setw(5) << goat.get_name() 
+        cout << "[" << i << "] " << left << setw(5) << goat.get_name() 
              << " (" << goat.get_age() 
              << ", " << goat.get_color() << ")" << endl;
+        i++;
     }
     cout << "-------------------------" << endl;
 }
@@ -154,7 +155,7 @@ void delete_goat(list<Goat> &trip) {
     // Get an iterator to the start
     auto it = trip.begin();
     
-    std::advance(it, choice);
+    std::advance(it, choice-1);
     
     cout << "\n" << it->get_name() << " has been removed from the trip." << endl;
     

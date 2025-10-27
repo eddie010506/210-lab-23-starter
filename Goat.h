@@ -25,7 +25,7 @@ public:
     }
     Goat(string n, int a, string c){
         name = n;
-        age = 0;
+        age = a;
         color = c;
     }
 
