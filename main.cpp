@@ -31,6 +31,34 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    list<Goat> goat_trip;
+    int menu_choice = 0;
+
+    //main application loop
+    do {
+        menu_choice = main_menu();
+        
+        switch (menu_choice) {
+            case 1:
+                add_goat(goat_trip, names, colors);
+                break;
+            case 2:
+                delete_goat(goat_trip);
+                break;
+            case 3:
+                display_trip(goat_trip);
+                break;
+            case 4:
+                cout << "Thanks for using Goat Manager 3001." << endl;
+                break;
+            default:
+                cout << "Invalid option. Please try again." << endl;
+        }
+        
+    } while (menu_choice != 4);
+
+    return 0;
+
 
 
 
@@ -44,4 +72,17 @@ int main_menu() {
     cout << "[3] List goats" << endl; 
     cout << "[4] Quit" << endl; 
     cout << "Choice --> ";
+
+    cin >> choice;
+    while (cin.fail()) {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Invalid input. Please enter a number." << endl;
+        cout << "Choice --> ";
+        cin >> choice;
+    }
+    return choice;
 }
+
+
+void add_goat(list<Goat> &trip, string)
