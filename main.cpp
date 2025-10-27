@@ -85,4 +85,45 @@ int main_menu() {
 }
 
 
-void add_goat(list<Goat> &trip, string)
+void add_goat(list<Goat> &trip, string names[], string colors[]){
+    string name = names[rand() % SZ_NAMES];
+    string color = colors[rand() % SZ_COLORS];
+    int age = rand() % MAX_AGE; // random age from 0 to 19
+
+    // create and add the goat
+    Goat newGoat(name, age, color);
+    trip.push_back(newGoat);
+    
+    // sort the list by name
+    trip.sort();
+    
+    cout << "\n" << name << " the " << color << " goat (age " << age << ") has joined the trip!" << endl;
+}
+
+void display_trip(list<Goat> trip) {
+    if (trip.empty()) {
+        cout << "The trip is empty. No goats yet!" << endl;
+        return;
+    }
+    
+    cout << "CURRENT GOAT TRIP" << endl;
+    //loop to iterate
+    for (const auto& goat : trip) {
+        cout << "- " << left << setw(5) << goat.get_name() 
+             << " (" << goat.get_age() 
+             << ", " << goat.get_color() << ")" << endl;
+    }
+    cout << "-------------------------" << endl;
+}
+
+int select_goat(list<Goat> trip) {
+    int i = 1; // start at 1 for the menu
+    cout << "Select a goat" << endl;
+    
+    // iterator for a list
+    for (auto it = trip.begin(); it != trip.end(); ++it) {
+        cout << "[" << i << "] " << left << setw(5) << it->get_name()
+             << " (" << it->get_age() 
+             << ", " << it->get_color() << ")" << endl:
+        i++;
+    }
